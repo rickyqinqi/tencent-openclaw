@@ -1,0 +1,56 @@
+{
+  "gateway": {
+    "auth": {
+      "mode": "token",
+      "token": "YOUR_GATEWAY_TOKEN"
+    },
+    "mode": "local"
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "siliconflow": {
+        "baseUrl": "https://api.siliconflow.cn/v1",
+        "apiKey": "YOUR_SILICONFLOW_API_KEY",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "Qwen/Qwen2.5-7B-Instruct",
+            "name": "Qwen 2.5 7B (Free)",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": {"input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0},
+            "contextWindow": 32768,
+            "maxTokens": 8192
+          },
+          {
+            "id": "deepseek-ai/DeepSeek-V3",
+            "name": "DeepSeek V3",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": {"input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0},
+            "contextWindow": 65536,
+            "maxTokens": 8192
+          },
+          {
+            "id": "deepseek-ai/DeepSeek-R1",
+            "name": "DeepSeek R1 (Reasoning)",
+            "reasoning": true,
+            "input": ["text"],
+            "cost": {"input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0},
+            "contextWindow": 65536,
+            "maxTokens": 8192
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "siliconflow/deepseek-ai/DeepSeek-V3",
+        "fallbacks": ["siliconflow/Qwen/Qwen2.5-7B-Instruct"]
+      }
+    }
+  }
+}

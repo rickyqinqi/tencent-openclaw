@@ -1,0 +1,8 @@
+ssh_output.txt
+ssh_result.txt
+github_result.txt
+.env
+*.key
+__pycache__/
+*.pyc
+.workbuddy/
